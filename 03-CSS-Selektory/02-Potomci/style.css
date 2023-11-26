@@ -35,3 +35,59 @@ CSS Selektory:
 :nth-child(3n)	  každý 3. potomek
 :nth-child(3n+2)	vždy 2. potomek z každé trojice
 */
+ 
+
+/*prvek, který má na sobě třídu čtverec a je prvním potomkem svého rodiče.*/
+/*pokud mezera mezi ctverec a dvojtečkou - první potomek, který je uvnitř čtverce*/
+
+/*.ctverec:first-child{background-color:lightblue;} 
+
+.ctverec :first-child{border: 5px solid blue;} 
+
+.ctverec:last-child{
+	background-color: lightpink;
+	border: 5px solid deeppink;
+}
+*/
+
+/*.ctverec:nth-child(5){
+	background-color: fuchsia;
+}
+
+.ctverec:nth-child(10){
+	background-color: gainsboro;
+}*/
+
+/*.ctverec:nth-child(5n){
+	background-color: deepskyblue;
+}*/
+
+h1{
+	color:darkblue;
+}
+
+.ctverec:nth-child(3n){
+	background-color: cornflowerblue;
+ 
+}
+
+.ctverec:nth-child(3n+2){
+	background-color: aliceblue;
+}
+
+.ctverec:nth-child(3n+1){
+	background-color: lightblue;
+}
+
+tr:nth-child(even){ 
+	background-color:lightpink;
+}
+
+tr:nth-child(odd){
+	background-color: blanchedalmond;
+}
+
+h3:nth-child(3n+3){
+	color:snow;
+}
+
