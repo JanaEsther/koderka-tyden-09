@@ -1,24 +1,29 @@
 /* nejsme vcerejsi, pouzivame moderni box model */
-html { box-sizing: border-box; }
-*, :after, :before { box-sizing: inherit; }
+html {
+  box-sizing: border-box;
+}
+*,
+:after,
+:before {
+  box-sizing: inherit;
+}
 
 body {
-	font: 16px/1.5 sans-serif;
+  font: 16px/1.5 sans-serif;
 }
 
 .box {
-	padding: 20px;
-	margin: 30px 0;
-	border: 2px solid blue;
-	background-color: lightcyan;
+  padding: 20px;
+  margin: 30px 0;
+  border: 2px solid blue;
+  background-color: lightcyan;
 }
 
 .vnitrek {
-	padding: 20px;
-	border: 2px solid orange;
-	background-color: yellow;
+  padding: 20px;
+  border: 2px solid orange;
+  background-color: yellow;
 }
-
 
 /*************************************************/
 
@@ -26,25 +31,191 @@ body {
 Opakování:
 ----------
 element									html element / název značky
+h2 {
+  color: red;
+}
 .class									prvek s class="..."
+.box {
+  background-color: lawngreen;
+}
 #id											prvek s id="..."
+#seznam {
+  background-color: deeppink;
+}
+
+/*
 
 selector1, selector2		více prvků oddělených čárkou
+h1,
+h2,
+.box {
+  font-size: 60px;
+}
+
 selector1 selector2			element2 uvnitř elementu1
+*/
+/*.box p{
+	color:darkorchid; 
+}
 
+.vnitrek p {
+  color: red;
+}
 
-Nové CSS Selektory:
+#seznam a {
+  text-decoration: none;
+  color: ghostwhite;
+}
+
+ul {
+  list-style: none;
+}*/
+
+/*
+Nové CSS Selektory - kombinace selektorů a mezi nimi je vztah:
 -------------------
 selector1.selector2			element1, který má css třídu 2
+vybíráme prvek na kterém je třída*/
 
-selector1 selector2			element2 uvnitř elementu1 (nemusí být přímý rodič)
-selector1>selector2		  element2, jehož přímý rodič je element1
+div.box{background-color: aquamarine;}
+.box.sekce {background-color: cornsilk;}
+/*chci něco co má třídu box a zároveň třídu sekce, element má obě třídy*/
 
-selector1+selector2		  element2, který následuje okamžitě za elementem1
-selector1~selector2     element2, kterému předchází element1
+
+s/*elector1 selector2			element2 uvnitř elementu1 (nemusí být přímý rodič)
+kontextový selektor*/
+
+p unvnitř boxu*/
+
+.box p{color: pink;}
+
+/*selector1>selector2		  element2, jehož přímý rodič je element1
+
+.box > p{color:gold}  - selektor přímý potomek
+
+selector1+selector2		  element2, který následuje okamžitě za elementem1, platí pro prvek , který je na konci
+
+/*chci stylovat odstavec, který se nachází přímo za h2, nesmí mezi nimi nic být*/
+h2+p{
+	color: violet;
+}
+
+/*selector1~selector2     element2, kterému předchází element1 (~ tilda) elementy jsou na 
+stejné úrovni vnoření
 
 selector[attr="val"]		element s attributem o určité hodnotě
 												*= kdekoliv v textu
 												^= na začátku
 												$= na konci
-*/
+*/ 
+/*prvek section, který na sobě má třídu box*/
+section.box{background-color: chartreuse;}
+
+/*pro všechny divy co mají třídu box*/
+/*pokud bude něco.něco - tak to je ta první věc , která na sobě má tu třídu, která je na druhém místě.
+div.box{ background-color: pink;}
+/* .box - univerzálně cokoliv co má tuhle třídu.*/
+/* - něco s třídou box co je uvnitř prvku section - mezera mezi section a .box
+section .box{background-color: chartreuse;}*/
+
+/*.box p{color:red;}*/
+
+/*.box > p{color:gold} */
+
+
+
+.kontejner{
+	border: 2px solid black;
+	background-color: gainsboro;
+	padding: 20px;
+}
+
+.kontejner p{
+	margin: 0;
+}
+
+/*styluju odstavec, který se nachází těsně za dalším odstavcem, který je unvitř kontejneru*/
+.kontejner p + p{
+margin-top: 20px;
+}
+
+/*vybere pouze odstavce, které jsou za jiným odstavcem*/
+p+p {
+	color:green;
+}
+
+/*vybere odsstavce za nadpisem h2*/
+h2 + p{
+	color: violet;
+}
+
+h2~ p {color:indigo}
+
+h2+p{
+	font-size: 24px;
+	font-style: italic;
+	color:grey;
+}
+
+/*selector[attr="val"]		element s attributem o určité hodnotě
+												*= kdekoliv v textu
+												^= na začátku
+												$= na konci*/
+		/*atribut je cokoliv co je napsáno uvnitř uzavíracího prvku značky*/										
+
+
+[alt]{
+	border: 5px solid red;
+}
+
+[alt*="video"]{
+	border: 5px solid blueviolet;
+}
+
+[alt="music"]{
+	border: 5px solid yellow;
+	background-color: lightgoldenrodyellow
+}
+
+section[class] {
+	border: 5px solid chocolate;
+}
+
+/*pokud uděláme mezeru mezi section a class, znamená to vyber jakýlkoliv prvek, který má značku class a je
+ unvitř section*/
+
+section [class] {
+	border: 5px solid chocolate;
+	background-color: bisque;
+}
+
+/*a[href^="http://"], tilda = alt + 126
+a[href^="https://"]
+ {
+	background-color: plum;
+}*/
+
+a[href $=".pdf"] {
+	padding-left: 1.1em;
+	background-image:url(images/pdf.svg);
+	background-repeat: no-repeat;
+	background-size: 1em 1em;
+	background-position: left center ;	
+}
+
+a[href $=".doc"] {
+	padding-left: 1.1em;
+	background-image:url(images/doc.svg);
+	background-repeat: no-repeat;
+	background-size: 1em 1em;
+	background-position: left center ;	
+}
+
+a[href $=".xls"],
+a[href $=".xlsx"] {
+	padding-left: 1.1em;
+	background-image:url(images/xls.svg);
+	background-repeat: no-repeat;
+	background-size: 1em 1em;
+	background-position: left center ;	
+}
